@@ -2,6 +2,8 @@ package ems.servlets;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.core.Logger;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/bye")
 public class Hello extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 
 	/**
 	 * @see HttpServlet#HttpServlet()
