@@ -5,6 +5,7 @@ import java.io.IOException;
 import ems.Employee;
 import ems.EmployeeType;
 import ems.LoginService;
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -34,9 +35,8 @@ public class DemoLoginServlet extends HttpServlet {
 //		response.getWriter().append("Hello From DemoLoginServlet").append(request.getContextPath());
 		System.out.println("Inside doget method");
 		
-		Employee emp = new Employee();
+//		Employee emp = new Employee();
 		
-		request.setAttribute("employee", emp);
 		
 		response.sendRedirect("login.jsp");
 		
@@ -68,14 +68,25 @@ public class DemoLoginServlet extends HttpServlet {
 //		}
 		
 		if (emp == null) {
-			response.sendRedirect("login.jsp");
+			
+			request.setAttribute("error", "Login Failure. Check username and password");
+			
+			request.setAttribute("username1", username);
+			request.setAttribute("password1", password);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
+			rd.forward(request, response);
+			
+//			response.sendRedirect("login.jsp");
+		} else {
+			if (emp.getEmployeeType() == EmployeeType.ADMIN) {
+				response.sendRedirect("admin-dashboard.jsp");
+			} else {
+				response.sendRedirect("user-dashboard.jsp");
+			}
 		}
 		
-		if (emp.getEmployeeType() == EmployeeType.ADMIN) {
-			response.sendRedirect("admin-dashboard.jsp");
-		} else {
-			response.sendRedirect("user-dashboard.jsp");
-		}
+		
 		
 	}
 	
@@ -93,9 +104,7 @@ public class DemoLoginServlet extends HttpServlet {
 		
 		LoginService loginService = new LoginService();
 		
-		Employee emp = loginService.login(username, password);
-		
-		
+		Employee emp = loginService.login(username, password);	
 		
 	}
 	
@@ -114,8 +123,6 @@ public class DemoLoginServlet extends HttpServlet {
 		LoginService loginService = new LoginService();
 		
 		Employee emp = loginService.login(username, password);
-		
-		
 		
 		
 	}

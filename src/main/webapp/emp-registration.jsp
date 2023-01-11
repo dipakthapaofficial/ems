@@ -73,6 +73,15 @@ a {
 </head>
 <body>
 
+<%
+		String internalError = (String) request.getAttribute("internalError");
+		if (internalError != null && internalError != "") {
+			out.print("<span style='color:red;'>");
+			out.print(internalError);
+			out.print("</span><br/>");
+		}
+	%>
+
 <form action="/ems/register" method="post">
   <div class="container">
     <h1>Register</h1>
@@ -81,13 +90,15 @@ a {
 	
 	
     <label for="firstName"><b>First Name</b></label>
-    <input type="text" placeholder="Enter First Name" name="firstName" id="firstName" required>
+    <input type="text" placeholder="Enter First Name" name="firstName" id="firstName"  value="${firstName}" required>
+    
+    <%-- <input type="text" placeholder="Enter First Name" name="firstName" id="firstName"  value="${employee.firstName}" required> --%>
 
    	<label for="lastName"><b>Last Name</b></label>
-    <input type="text" placeholder="Enter lastName" name="lastName" id="lastName" required>
+    <input type="text" placeholder="Enter lastName" name="lastName"  value="${lastName}" id="lastName" required>
     
     <label for="gender"><b>Gender</b></label>
-    <select name="gender">
+    <select name="gender" value="${gender}">
     	<option value="">Select Gender</option>
     	<option value="MALE">MALE</option>
     	<option value="FEMALE">FEMALE</option>
@@ -96,11 +107,20 @@ a {
     
     <br/><br/>
     
+    
     <label for="username"><b>Username::</b></label>
-    <input type="text" placeholder="Enter username" name="username" id="username" required>
+    <input type="text" placeholder="Enter username" name="username" id="username" value="${username}" required><br>
+    <%
+		String errorMessage = (String) request.getAttribute("error");
+		if (errorMessage != null && errorMessage != "") {
+			out.print("<span style='color:red;'>");
+			out.print(errorMessage);
+			out.print("</span><br/>");
+		}
+	%>
     
     <label for="password"><b>Password::</b></label>
-    <input type="password" placeholder="Enter password" name="password" id="password" required>
+    <input type="password" placeholder="Enter password" name="password" id="password" value="${password}" required>
 
     <button type="submit" class="registerbtn">Register</button>
   </div>

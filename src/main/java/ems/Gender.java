@@ -17,7 +17,7 @@ public enum Gender {
 		this.value = value;
 	}
 	
-	static Gender getByValue(String value) {
+	public static Gender getByValue(String value) {
 		for (Gender g : Gender.values()) {
 			if (g.value.equals(value)) {
 				return g;
