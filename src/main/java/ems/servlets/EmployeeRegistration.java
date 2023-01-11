@@ -92,9 +92,10 @@ public class EmployeeRegistration extends HttpServlet {
 			request.setAttribute("username", username);
 			request.setAttribute("password", password);
 			
-//			request.setAttribute("employee", emp1);
+			request.setAttribute("employee", emp1);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("/emp-registration.jsp");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/error.jsp");
 			rd.forward(request, response);
 			
 			return;

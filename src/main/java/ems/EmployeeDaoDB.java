@@ -143,7 +143,7 @@ public class EmployeeDaoDB implements EmployeeDaoInterface {
 	}
 	
 	@Override
-	public void viewAll() throws IOException {
+	public List<Employee> viewAll() throws IOException {
 		Connection con = null;
 		Statement statement = null;
 		List<Employee> employeeList = new ArrayList<Employee>();
@@ -210,6 +210,8 @@ public class EmployeeDaoDB implements EmployeeDaoInterface {
 			}
 			
 		}
+		
+		return employeeList;
 		
 	}
 	

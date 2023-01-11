@@ -2,12 +2,13 @@ package ems;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface EmployeeDaoInterface {
 	
 	public void editEmployee(Employee emp) throws IOException;
 	
-	public void viewAll() throws IOException;
+	public List<Employee> viewAll() throws IOException;
 	
 	public Employee searchById(Integer id) throws IOException;
 	

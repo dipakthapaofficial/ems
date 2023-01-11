@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class EmployeeDao implements EmployeeDaoInterface {
 	
@@ -53,7 +54,7 @@ public class EmployeeDao implements EmployeeDaoInterface {
 	}
 	
 	@Override
-	public void viewAll() throws IOException {
+	public List<Employee> viewAll() throws IOException {
 		BufferedReader reader = new BufferedReader(new FileReader("employee.txt"));
 		String line = reader.readLine();
 		
@@ -61,6 +62,7 @@ public class EmployeeDao implements EmployeeDaoInterface {
 			System.out.println(line);
 			line = reader.readLine();
 		}
+		return null;
 	}
 	
 	//File Storage

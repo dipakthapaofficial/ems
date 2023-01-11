@@ -1,6 +1,7 @@
 package ems;
 
 import java.io.IOException;
+import java.util.List;
 
 public class EmployeeDaoStatic implements EmployeeDaoInterface {
 	
@@ -49,13 +50,14 @@ public class EmployeeDaoStatic implements EmployeeDaoInterface {
 	}
 	
 	@Override
-	public void viewAll() throws IOException {
+	public List<Employee> viewAll() throws IOException {
 		for (Employee emp : employeeList) {
 			if (emp != null) {
 				System.out.println(emp);
 			}
 			
 		}
+		return null;
 		
 	}
 	

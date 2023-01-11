@@ -2,13 +2,13 @@ package ems;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class EmployeeService {
 	
-	public void viewAll() throws IOException {
+	public List<Employee> viewAll() throws IOException {
 		EmployeeDaoInterface dao = new EmployeeDaoDB();
-		dao.viewAll();
-		
+		return dao.viewAll();
 	}
 	
 	/**
