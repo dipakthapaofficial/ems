@@ -1,6 +1,7 @@
 package ems;
 
 import java.io.IOException;
+import java.util.List;
 
 public class StaticListEmpDao implements EmployeeDaoInterface {
 	
@@ -32,9 +33,9 @@ public class StaticListEmpDao implements EmployeeDaoInterface {
 	}
 	
 	@Override
-	public void viewAll() throws IOException {
+	public List<Employee> viewAll() throws IOException {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 	
 	@Override
