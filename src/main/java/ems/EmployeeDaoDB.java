@@ -27,44 +27,44 @@ public class EmployeeDaoDB implements EmployeeDaoInterface {
 			
 			
 			String updateQuery = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
-			String updateQuery2 = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
+//			String updateQuery2 = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
 			
 			//			con.setAutoCommit(false);
 			
-			Savepoint point = con.setSavepoint();
+//			Savepoint point = con.setSavepoint();
 			//			
 			//			String updateQuery3 = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
 			//			
 			//			
 			//			String updateQuery4 = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
 			//	
-			Savepoint point1 = con.setSavepoint();
-			try {
-				//				
-				//			String updateQuery6 = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
-				//		Exceute query
-				//commmit
-			}
-			catch (Exception e) {
-				//If exception occurs revert to point1
-			}
-			
-			//			
-			//			String updateQuery6 = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
-			//			
-			
-			Savepoint point2 = con.setSavepoint();
-			try {
-				//				
-				//			String updateQuery6 = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
-				//		Exceute query
-			}
-			catch (Exception e) {
-				//If exception occurs revert to point2
-				con.rollback(point2);
-				return;
-			}
-			
+//			Savepoint point1 = con.setSavepoint();
+//			try {
+//				//				
+//				//			String updateQuery6 = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
+//				//		Exceute query
+//				//commmit
+//			}
+//			catch (Exception e) {
+//				//If exception occurs revert to point1
+//			}
+//			
+//			//			
+//			//			String updateQuery6 = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
+//			//			
+//			
+//			Savepoint point2 = con.setSavepoint();
+//			try {
+//				//				
+//				//			String updateQuery6 = "UPDATE employee set first_name=?, last_name=?, gender=?, password=?, employee_type=? where id=?";
+//				//		Exceute query
+//			}
+//			catch (Exception e) {
+//				//If exception occurs revert to point2
+//				con.rollback(point2);
+//				return;
+//			}
+//			
 			System.out.println(updateQuery);
 			
 			
@@ -78,18 +78,21 @@ public class EmployeeDaoDB implements EmployeeDaoInterface {
 			//Set id for where clause
 			statement.setInt(6, emp.getId());
 			
+			
+			System.out.println(statement.toString());
+			
 			int resultValue = statement.executeUpdate();
 			
 			//			con.commit();
 			
 			//			con.rollback();
-			con.rollback(point);
+//			con.rollback(point);
 			
-			if (resultValue > 0) {
-				System.out.println("Update successful");
-			} else {
-				System.out.println("Update failed");
-			}
+//			if (resultValue > 0) {
+//				System.out.println("Update successful");
+//			} else {
+//				System.out.println("Update failed");
+//			}
 			
 		}
 		catch (ClassNotFoundException e) {

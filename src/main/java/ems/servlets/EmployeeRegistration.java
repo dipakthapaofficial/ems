@@ -32,9 +32,39 @@ public class EmployeeRegistration extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.sendRedirect("emp-registration.jsp");
+		
+		System.out.println(request.getRequestURI());
+		
+		String id = request.getParameter("id");
+		System.out.println("ID::"+id);
+		
+		int empId= 0;
+		if (id != null && id != "") {
+			empId = Integer.parseInt(id);
+		}
+		
+		if (empId == 0) {
+			response.sendRedirect("emp-registration.jsp");
+		} else {
+			// Get employee value
+			
+			EmployeeService employeeService = new EmployeeService();
+			Employee emp = employeeService.findById(empId);
+			
+			request.setAttribute("id", emp.getId());
+			request.setAttribute("firstName", emp.getFirstName());
+			request.setAttribute("lastName", emp.getLastName());
+			request.setAttribute("username", emp.getFirstName());
+			request.setAttribute("password", emp.getFirstName());
+			request.setAttribute("gender", emp.getGender());
+			
+			request.setAttribute("employee", emp);
+			request.getRequestDispatcher("emp-registration.jsp").forward(request, response);
+			
+		}
+		
+		
+		
 	}
 
 	/**
@@ -79,10 +109,23 @@ public class EmployeeRegistration extends HttpServlet {
 		
 		try {
 			
-			emp1.setUsername("dipak");
+			String id = request.getParameter("id");
+			System.out.println("ID::"+id);
 			
+			int empId= 0;
+			if (id != null && id != "") {
+				empId = Integer.parseInt(id);
+			}
+			emp1.setId(empId);
 			
-			emService.addEmployee(emp1);
+//			emp1.setUsername("dipak");
+			
+			if (empId == 0) {
+				emService.addEmployee(emp1);
+			} else {
+				emService.editProfile(emp1);
+			}
+			
 		} catch (ClassNotFoundException | IOException | SQLException e) {
 			request.setAttribute("internalError", "Internal Server error. Please contact your admin!!!");
 			e.getStackTrace();

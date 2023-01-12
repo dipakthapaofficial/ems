@@ -61,6 +61,17 @@ public class EmployeeService {
 		System.out.println("Edited Successfully.");
 	}
 	
+	/**
+	 * Search by ID
+	 * @param id
+	 * @return
+	 * @throws IOException
+	 */
+	public Employee findById(Integer id) throws IOException {
+		EmployeeDaoInterface dao = new EmployeeDaoDB();
+		return dao.searchById(id);
+	}
+	
 	public Employee addEmployee(Employee emp) throws IOException, SQLException, ClassNotFoundException {
 		EmployeeDaoInterface dao = new EmployeeDaoDB();
 		dao.addEmployee(emp);

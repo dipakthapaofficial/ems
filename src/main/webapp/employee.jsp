@@ -18,6 +18,8 @@
 	<br>
 	<br>
 	
+	<a href="/ems/register?id=1"> Do Something </a>
+	
 	<table border="1">
 		<tr>
 				<th>
@@ -43,6 +45,7 @@
 				<th>
 				</th>
 		</tr>
+		
 	
 	
 	<%
@@ -56,7 +59,7 @@
 			out.print("<td>"+emp.getGender() + "</td>");
 			out.print("<td>"+emp.getUsername() + "</td>");
 			out.print("<td>"+emp.getEmployeeType() + "</td>");
-			out.print("<td> Edit </td>");
+			out.print("<td> <a href='/ems/register?id="+emp.getId() +"'> Edit </a></td>");
 			out.print("<td> Delete </td>");
 			out.print("</tr>");
 		}

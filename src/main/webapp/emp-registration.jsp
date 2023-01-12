@@ -5,7 +5,14 @@
 <head>
 <meta charset="ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Employee Registration</title>
+
+<%
+		if (request.getAttribute("id") != null && request.getAttribute("id") != "") {
+			out.print(" <title>Employee Update</title>");
+		} else {
+			out.print("<title>Employee Registration</title>");
+		}
+	%>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -84,10 +91,18 @@ a {
 
 <form action="/ems/register" method="post">
   <div class="container">
-    <h1>Register</h1>
+    
+    <%
+		if (request.getAttribute("id") != null && request.getAttribute("id") != "") {
+			out.print("<h1>Update Employee</h1>");
+		} else {
+			out.print("<h1>Register</h1>");
+		}
+	%>
     <p>Please fill in this form to create an account.</p>
     <hr>
 	
+    <input type="hidden" name="id"  value="${id}" >
 	
     <label for="firstName"><b>First Name</b></label>
     <input type="text" placeholder="Enter First Name" name="firstName" id="firstName"  value="${firstName}" required>
@@ -98,7 +113,7 @@ a {
     <input type="text" placeholder="Enter lastName" name="lastName"  value="${lastName}" id="lastName" required>
     
     <label for="gender"><b>Gender</b></label>
-    <select name="gender" value="${gender}">
+    <select name="gender" value="${gender}" required>
     	<option value="">Select Gender</option>
     	<option value="MALE">MALE</option>
     	<option value="FEMALE">FEMALE</option>
@@ -107,9 +122,16 @@ a {
     
     <br/><br/>
     
+    <%
+		if (request.getAttribute("id") == null || request.getAttribute("id") == "") {
+			out.print("<label for='username'><b>Username::</b></label>" +
+				    "<input type='text' placeholder='Enter username' name='username' id='username' value=" +
+				    		request.getAttribute("username") +" required><br>");
+			
+		}
+	%>
     
-    <label for="username"><b>Username::</b></label>
-    <input type="text" placeholder="Enter username" name="username" id="username" value="${username}" required><br>
+    
     <%
 		String errorMessage = (String) request.getAttribute("error");
 		if (errorMessage != null && errorMessage != "") {
@@ -121,8 +143,18 @@ a {
     
     <label for="password"><b>Password::</b></label>
     <input type="password" placeholder="Enter password" name="password" id="password" value="${password}" required>
-
-    <button type="submit" class="registerbtn">Register</button>
+    
+    <%
+		if (request.getAttribute("id") != null && request.getAttribute("id") != "") {
+			out.print(" <button type='submit' class='registerbtn'>Update</button>");
+		} else {
+			out.print(" <button type='submit' class='registerbtn'>Register</button>");
+		}
+	%>
+	
+	 <%-- <button type='submit' class='registerbtn'><%out.print(request.getAttribute("buttonName")); %></button>     --%>
+	
+   
   </div>
   
   <div class="container signin">
