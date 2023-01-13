@@ -40,8 +40,6 @@
 	<br>
 	<br>
 	
-	<a href="/ems/register?id=1"> Do Something </a>
-	
 	<table border="1">
 		<tr>
 				<th>
