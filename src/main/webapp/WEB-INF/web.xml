@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>ems</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -9,34 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
- <!--  <servlet>
-    <description></description>
-    <display-name>DemoLoginServlet</display-name>
-    <servlet-name>DemoLoginServlet</servlet-name>
-    <servlet-class>ems.servlets.DemoLoginServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>DemoLoginServlet</servlet-name>
-    <url-pattern>/DemoLoginServlet</url-pattern>
-  </servlet-mapping>
   <servlet>
     <description></description>
-    <display-name>EmployeeRegistration</display-name>
-    <servlet-name>EmployeeRegistration</servlet-name>
-    <servlet-class>ems.servlets.EmployeeRegistration</servlet-class>
+    <display-name>ActiveStatusServelet</display-name>
+    <servlet-name>ActiveStatusServelet</servlet-name>
+    <servlet-class>ems.servlets.ActiveStatusServelet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>EmployeeRegistration</servlet-name>
-    <url-pattern>/EmployeeRegistration</url-pattern>
+    <servlet-name>ActiveStatusServelet</servlet-name>
+    <url-pattern>/ActiveStatusServelet</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>EmployeeServlet</display-name>
-    <servlet-name>EmployeeServlet</servlet-name>
-    <servlet-class>ems.servlets.EmployeeServlet</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>EmployeeServlet</servlet-name>
-    <url-pattern>/EmployeeServlet</url-pattern>
-  </servlet-mapping> -->
 </web-app>

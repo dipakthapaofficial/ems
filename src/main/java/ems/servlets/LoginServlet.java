@@ -1,6 +1,7 @@
 package ems.servlets;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import ems.Employee;
 import ems.EmployeeType;
@@ -11,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LoginServlet
@@ -62,6 +64,12 @@ public class LoginServlet extends HttpServlet {
 		
 		LoginService loginService = new LoginService();
 		Employee emp = loginService.login(username, password);
+		
+		if (emp != null) {
+			HttpSession session = request.getSession();
+			session.setAttribute("user", emp);
+			session.setAttribute("lastActive", LocalDateTime.now());
+		}
 		
 		if  (emp != null && emp.getEmployeeType() == EmployeeType.ADMIN) {
 			

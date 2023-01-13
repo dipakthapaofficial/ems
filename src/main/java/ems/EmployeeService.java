@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import ems.servlets.EmployeeServlet;
+
 public class EmployeeService {
 	
 	public List<Employee> viewAll() throws IOException {
@@ -19,6 +21,7 @@ public class EmployeeService {
 	 * @throws IOException
 	 */
 	public Employee searchById(Integer id) throws IOException {
+		
 		EmployeeDaoInterface dao = new EmployeeDaoDB();
 		
 		return dao.searchById(id);
