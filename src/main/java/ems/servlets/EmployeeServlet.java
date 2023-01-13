@@ -59,7 +59,31 @@ public class EmployeeServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		doGet(request, response);
+		System.out.println("Inside do doPost method...");
+		
+		String method = request.getParameter("method");
+		
+		//Forwarding call to delete method based on the method passed as parameter. Workaround
+		if (method != null && "delete".equals(method)) {
+			doDelete(request, response);
+		} else {
+			doGet(request, response);
+		}
+	}
+	
+	
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		System.out.println("Inside do delete method...");
+		String id = request.getParameter("id");
+		EmployeeService empService = new EmployeeService();
+		empService.removeEmployee(id);
+		
+		//Passing message to front end through send redirect.
+		//Set parameter in URL and use request.getParameter in jsp
+		String successMessage = "?message=Deleted Successfully!!!";
+		
+		response.sendRedirect("/ems/employee"+successMessage);	
 	}
 
 }

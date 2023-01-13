@@ -27,7 +27,7 @@ public class EmployeeService {
 		return dao.searchById(id);
 	}
 	
-	boolean removeEmployee(String id) throws IOException {
+	public boolean removeEmployee(String id) throws IOException {
 		System.out.println("Enter employee id::");
 		
 		//		Employee emp = this.searchById(id);

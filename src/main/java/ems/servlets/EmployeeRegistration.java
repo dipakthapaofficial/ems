@@ -33,16 +33,16 @@ public class EmployeeRegistration extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//Filter Alternative
-		Employee employee = (Employee) request.getSession().getAttribute("user");
-		
-		if (employee == null) {
-			//User has not been authenticated yet
-//			res.sendRedirect("/ems/login");
-			
-			request.getRequestDispatcher("/login").forward(request, response);
-			return;
-			
-		} 	
+//		Employee employee = (Employee) request.getSession().getAttribute("user");
+//		
+//		if (employee == null) {
+//			//User has not been authenticated yet
+////			res.sendRedirect("/ems/login");
+//			
+//			request.getRequestDispatcher("/login").forward(request, response);
+//			return;
+//			
+//		} 	
 		
 		System.out.println(request.getRequestURI());
 		
@@ -84,15 +84,15 @@ public class EmployeeRegistration extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		Employee employee = (Employee) request.getSession().getAttribute("user");
-		
-		if (employee == null) {
-			//User has not been authenticated yet
-//			res.sendRedirect("/ems/login");
-			
-			request.getRequestDispatcher("/login").forward(request, response);
-			
-		} 
+//		Employee employee = (Employee) request.getSession().getAttribute("user");
+//		
+//		if (employee == null) {
+//			//User has not been authenticated yet
+////			res.sendRedirect("/ems/login");
+//			
+//			request.getRequestDispatcher("/login").forward(request, response);
+//			
+//		} 
 		
 		System.out.println("Inside post method");
 		
@@ -165,7 +165,9 @@ public class EmployeeRegistration extends HttpServlet {
 			return;
 		}
 		
-		response.sendRedirect("https://google.com");
+		request.setAttribute("message", "Employee Registered Successfully!!!");
+		
+		request.getRequestDispatcher("/employee").forward(request, response);
 		
 		
 		

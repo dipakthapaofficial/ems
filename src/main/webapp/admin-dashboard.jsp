@@ -12,14 +12,19 @@
 <h1> This is an admin dashboard.</h1>
 
 
-<div style="float='right';">
+<div >
 	<%
 		Employee emp = (Employee) request.getSession().getAttribute("user");
 		out.print(emp.getUsername());
-		out.print(emp.getId());
 	
 	%>
 </div>
+
+
+<ul>
+	<li><a href="/ems/employee" >List Employees</a></li>
+</ul>
+
 
 <a href="/ems/logout">Logout</a>
 
