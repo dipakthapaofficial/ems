@@ -11,7 +11,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebFilter(filterName ="authFilter", urlPatterns = {"/employee", "/register"})
+//@WebFilter(filterName ="authFilter", urlPatterns = {"/employee", "/register"})
 public class AuthFilter implements Filter {
 
 	@Override

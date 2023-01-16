@@ -1,6 +1,7 @@
 package ems.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import ems.Employee;
@@ -69,6 +70,20 @@ public class EmployeeServlet extends HttpServlet {
 		} else {
 			doGet(request, response);
 		}
+		
+//		List<String> names = new ArrayList();
+//		names.add("Ram");
+//		names.add("Ram2");
+//		names.add("Ram3");
+//		names.add("Ram4");
+//		names.add("Ram5");
+//		
+//		for(String name: names) {
+//			
+//		}
+		
+		
+		
 	}
 	
 	
@@ -83,7 +98,7 @@ public class EmployeeServlet extends HttpServlet {
 		//Set parameter in URL and use request.getParameter in jsp
 		String successMessage = "?message=Deleted Successfully!!!";
 		
-		response.sendRedirect("/ems/employee"+successMessage);	
+		response.sendRedirect("/ems/employee"+successMessage);
 	}
 
 }

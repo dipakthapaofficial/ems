@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class AuthenticationFilter
  */
-@WebFilter(urlPatterns = {"/register", "/employee"})
+//@WebFilter(urlPatterns = {"/*"})
 public class AuthenticationFilter implements Filter {
 
     /**
@@ -42,28 +42,40 @@ public class AuthenticationFilter implements Filter {
 		System.out.println("Inside Do filter method");
 		
 		HttpServletRequest req = (HttpServletRequest) request;
-		HttpServletResponse res = (HttpServletResponse) response;
 		
-		Employee emp = (Employee) req.getSession().getAttribute("user");
+		String path = req.getRequestURI();
+		System.out.println("Path:::"+path);
 		
-		LocalDateTime lastActive = (LocalDateTime) req.getSession().getAttribute("lastActive");
-		
-		LocalDateTime now = LocalDateTime.now();
-		
-		// (now - lastActive) // Durataion is 10 mintues. Request dispatch to logout 
-		
-		
-		
-		if (emp == null) {
-			//User has not been authenticated yet
-//			res.sendRedirect("/ems/login");
-			
-			req.getRequestDispatcher("/login").forward(req, res);
-			
-		} else {
-			// pass the request along the filter chain
+		if (path.contains("login")) {
 			chain.doFilter(request, response);
+		} else {
+			
+			HttpServletResponse res = (HttpServletResponse) response;
+			
+			Employee emp = (Employee) req.getSession().getAttribute("user");
+			
+			LocalDateTime lastActive = (LocalDateTime) req.getSession().getAttribute("lastActive");
+			
+			LocalDateTime now = LocalDateTime.now();
+			
+			// (now - lastActive) // Durataion is 10 mintues. Request dispatch to logout 
+			
+			
+			if (emp == null) {
+				//User has not been authenticated yet
+//				res.sendRedirect("/ems/login");
+				
+				req.getRequestDispatcher("/login").forward(req, res);
+				
+			} else {
+				// pass the request along the filter chain
+				chain.doFilter(request, response);
+			}
+			
 		}
+		
+		
+		
 		
 		System.out.println("After filter execution...");
 	}

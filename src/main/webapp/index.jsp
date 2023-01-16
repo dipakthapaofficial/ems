@@ -1,9 +1,13 @@
 <!DOCTYPE html>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <link href="style.css" />
 <title>This is a title</title>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 </head>
 <body>
 
@@ -75,11 +79,11 @@
 	<a href="style.css" title="Loads Css File">Style</a>
 	<a href="https://google.com" title="Forwards to Google Search">Google</a>
 	<hr />
-	<video src="https://www.youtube.com/watch?v=HDC-L0Zuu_A" type="video/mp4" ></video>
+	<!-- <video src="https://www.youtube.com/watch?v=HDC-L0Zuu_A" type="video/mp4" ></video>
 	<video src="https://www.youtube.com/watch?v=HDC-L0Zuu_A" ></video>
 	
 	<img src="https://picsum.photos/id/237/200/300" />
-	<iframe src="https://google.com" height="500" width="500"></iframe>
+	<iframe src="https://google.com" height="500" width="500"></iframe> -->
 	
 	<table border="1">
 		<tr>
@@ -117,15 +121,46 @@
 		<input type="password" name="password"  placeholder="Enter Password">
 
 		
-		<%
+	<%-- 	<%
 		for(int i=0; i<5; i++) {
 		out.print("Hello World");
-%>
+	%>
 		
 			<input type="submit" value="Submit" name="Submit">
 		
-		<% } %>
-		<button>Submit</button>
+		<% } %> --%>
+		
+		<%
+			List<String> names1 = new ArrayList<>();
+				names1.add("Ram");
+				names1.add("Ram2");
+				names1.add("Ram3");
+				names1.add("Ram4");
+				names1.add("Ram5");
+				
+				pageContext.setAttribute("names1", names1);
+		
+		%>
+		
+		
+		<c:forEach var="i" begin="1" step="1" end="5">
+			
+			<%-- <span>${i}</span> --%>
+			<c:out value="${i}"></c:out>
+			
+			<input type="submit" value="Submit" name="Submit">
+			<br/>
+		</c:forEach>
+			
+		
+		<c:forEach var="name" items="${names1}">
+			<c:out value="${name}"></c:out>
+			<span> ${name }</span>
+			<br>
+		</c:forEach>
+		
+		
+		<!-- <button>Submit</button> -->
 	
 	
 	</form>
