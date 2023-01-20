@@ -1,3 +1,6 @@
+<%@page import="java.util.Arrays"%>
+<%@page import="ems.Gender"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -12,6 +15,10 @@
 		} else {
 			out.print("<title>Employee Registration</title>");
 		}
+	%>
+	<%
+		List<Gender> genders = Arrays.asList(Gender.values());
+		pageContext.setAttribute("genders", genders);
 	%>
 <style>
 body {
@@ -119,6 +126,14 @@ a {
     	<option value="FEMALE">FEMALE</option>
     	<option value="OTHERS">OTHERS</option>
     </select>
+     <br/><br/>
+      <br/><br/>
+      
+    <select name="gender" value="${gender}" required>
+    <option value="">Select Gender</option>
+    <c:foreach var="gend" items="genders">
+    	<option value="${gend.value}">${gend}</option>
+    </c:foreach>
     
     <br/><br/>
     

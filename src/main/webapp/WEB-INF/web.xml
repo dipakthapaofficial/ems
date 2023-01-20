@@ -9,7 +9,14 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  <servlet>
+  	
+  	<!-- Setting up app context  -->
+	<!-- <web:context-param>
+		<something> Value Something</something>
+	</web:context-param>   -->
+	
+	
+ <!--  <servlet>
     <description></description>
     <display-name>ActiveStatusServelet</display-name>
     <servlet-name>ActiveStatusServelet</servlet-name>
@@ -18,5 +25,5 @@
   <servlet-mapping>
     <servlet-name>ActiveStatusServelet</servlet-name>
     <url-pattern>/ActiveStatusServelet</url-pattern>
-  </servlet-mapping>
+  </servlet-mapping> -->
 </web-app>

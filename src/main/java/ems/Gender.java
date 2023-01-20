@@ -11,7 +11,7 @@ public enum Gender {
 	FEMALE("FEMALE"),
 	OTHERS("OTHERS");
 	
-	String value;
+	public String value;
 	
 	Gender(String value) {
 		this.value = value;
@@ -24,6 +24,14 @@ public enum Gender {
 			}
 		}
 		return null;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 	
 }

@@ -1,3 +1,5 @@
+<%@page import="java.util.Arrays"%>
+<%@page import="ems.Gender"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="ems.Employee"%>
@@ -20,7 +22,7 @@
 <body>
 
 	<h1>Employee</h1>
-
+	
 	<%-- <%
 	//Used to display message from edit method, which is forwarded by request dispatcher
 	String message = (String) request.getAttribute("message");
@@ -89,10 +91,15 @@
 			<th>Gender</th>
 			<th>Username</th>
 			<th>Employee Type</th>
-			<th>Salary</th>
+			<c:if test="${user.employeeType == 'ADMIN'}">
+				<th>Salary</th>
+			</c:if>
 			<th>Join Date</th>
-			<th></th>
-			<th></th>
+			<c:if test="${user.employeeType == 'ADMIN'}">
+				<th></th>
+				<th></th>
+			</c:if>
+			
 		</tr>
 		
 		<c:forEach var="emp" items="${employees}">
@@ -104,17 +111,24 @@
 				<td>${emp.gender}</td>
 				<td>${emp.username}</td>
 				<td>${emp.employeeType}</td>
-				<td><fmt:formatNumber currencySymbol="$" type="currency">10000000</fmt:formatNumber></td>
+				<c:if test="${user.employeeType == 'ADMIN'}">
+					<td><fmt:formatNumber currencySymbol="$" type="currency">10000000</fmt:formatNumber></td>
+				</c:if>
 				<td><fmt:formatDate value="${regDate}" /></td>
-				<td><a href="<c:url value='register?id=${emp.id}' /> " > Edit </a></td>
-				<td><a href="/register?id=${emp.id} "> Edit </a></td>
-				<td>
-					<form action='/ems/employee' method='post'>
-						<input type='hidden' name='method' value='delete'> 
-						<input type='hidden' name='id' value='${emp.id}' /> 
-						<input type='submit' value='Delete'>
-					</form>
-				</td>
+				
+				<c:if test="${user.employeeType == 'ADMIN'}">
+					<td><a href="<c:url value='register?id=${emp.id}' /> " > Edit </a></td>
+					<td><a href="/register?id=${emp.id} "> Edit </a></td>
+					<td>
+						<form action='/ems/employee' method='post'>
+							<input type='hidden' name='method' value='delete'> 
+							<input type='hidden' name='id' value='${emp.id}' /> 
+							<input type='submit' value='Delete'>
+						</form>
+					</td>
+				</c:if>
+				
+				
 			</tr>
 		</c:forEach>
 
